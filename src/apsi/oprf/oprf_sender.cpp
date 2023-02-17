@@ -8,7 +8,7 @@
 #include <thread>
 
 // APSI
-#include "apsi/log.h"
+// #include "apsi/log.h"
 #include "apsi/oprf/oprf_sender.h"
 #include "apsi/thread_pool_mgr.h"
 #include "apsi/util/label_encryptor.h"
@@ -146,7 +146,7 @@ namespace apsi {
             const gsl::span<const Item> &oprf_items, const OPRFKey &oprf_key)
         {
             STOPWATCH(sender_stopwatch, "OPRFSender::ComputeHashes (unlabeled)");
-            APSI_LOG_DEBUG("Start computing OPRF hashes for " << oprf_items.size() << " items");
+            // APSI_LOG_DEBUG("Start computing OPRF hashes for " << oprf_items.size() << " items");
 
             ThreadPoolMgr tpm;
             vector<HashedItem> oprf_hashes(oprf_items.size());
@@ -168,7 +168,7 @@ namespace apsi {
                 f.get();
             }
 
-            APSI_LOG_DEBUG("Finished computing OPRF hashes for " << oprf_items.size() << " items");
+            // APSI_LOG_DEBUG("Finished computing OPRF hashes for " << oprf_items.size() << " items");
 
             return oprf_hashes;
         }
@@ -184,9 +184,9 @@ namespace apsi {
             }
 
             STOPWATCH(sender_stopwatch, "OPRFSender::ComputeHashes (labeled)");
-            APSI_LOG_DEBUG(
-                "Start computing OPRF hashes and encrypted labels for " << oprf_item_labels.size()
-                                                                        << " item-label pairs");
+            // APSI_LOG_DEBUG(
+            //     "Start computing OPRF hashes and encrypted labels for " << oprf_item_labels.size()
+            //                                                             << " item-label pairs");
 
             ThreadPoolMgr tpm;
             vector<pair<HashedItem, EncryptedLabel>> oprf_hashes(oprf_item_labels.size());
@@ -221,9 +221,9 @@ namespace apsi {
                 f.get();
             }
 
-            APSI_LOG_DEBUG(
-                "Finished computing OPRF hashes and encrypted labels for "
-                << oprf_item_labels.size() << " item-label pairs");
+            // APSI_LOG_DEBUG(
+            //     "Finished computing OPRF hashes and encrypted labels for "
+            //     << oprf_item_labels.size() << " item-label pairs");
 
             return oprf_hashes;
         }

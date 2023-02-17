@@ -20,6 +20,16 @@ namespace apsi {
     namespace oprf {
         class ECPoint {
         public:
+			/*
+			 *  type         |  32 bit  | 64 bit |
+			 *	digit_t      |  4 byte  | 8 byte |
+			 *  NWORDS_ORDER |  8 byte  | 4 byte |
+			 *  NWORDS_FIELD |  4 byte  | 2 byte |
+			 *
+			 *  felm_t  = 128 bit / 16 byte
+			 *  f2elm_t = 256 bit / 32 byte
+			 *  point_t = f2elm_t x, y = 64 byte / 512 bit
+			*/
             static constexpr std::size_t save_size = sizeof(f2elm_t);
             static constexpr std::size_t point_size = sizeof(point_t);
             static constexpr std::size_t order_size = sizeof(digit_t) * NWORDS_ORDER;
