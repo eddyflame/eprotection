@@ -40,8 +40,8 @@
 #include <vector>
 
 // APSI
-#include "apsi/config.h"
-#include "apsi/log.h"
+// #include "apsi/config.h"
+// #include "apsi/log.h"
 
 // SEAL
 #include "seal/util/common.h"

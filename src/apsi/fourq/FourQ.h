@@ -30,7 +30,7 @@ extern "C" {
 
 #if defined(__WINDOWS__) // Microsoft Windows OS
 #define OS_TARGET OS_WIN
-#elif defined(__LINUX__) // Linux OS
+#elif defined(__linux__) // Linux OS
 #define OS_TARGET OS_LINUX
 #else
 #error-- "Unsupported OS"
@@ -59,7 +59,7 @@ extern "C" {
 #define TARGET_ARM 3
 #define TARGET_ARM64 4
 
-#if defined(_AMD64_)
+#if defined(__amd64__)
 #define TARGET TARGET_AMD64
 #define RADIX 64
 typedef uint64_t digit_t; // Unsigned 64-bit digit
