@@ -30,7 +30,8 @@ extern "C" {
 
 #if defined(__WINDOWS__) // Microsoft Windows OS
 #define OS_TARGET OS_WIN
-#elif defined(__linux__) // Linux OS
+#elif defined(__linux__) // Linux OS  eddy for gcc __linux__ not __LINUX__
+#error -- "linux os"
 #define OS_TARGET OS_LINUX
 #else
 #error-- "Unsupported OS"
@@ -59,7 +60,8 @@ extern "C" {
 #define TARGET_ARM 3
 #define TARGET_ARM64 4
 
-#if defined(__amd64__)
+#if defined(__amd64__) // ** eddy ** for gcc __amd64__ not __AMD64__
+#error -- "target arch amd64"
 #define TARGET TARGET_AMD64
 #define RADIX 64
 typedef uint64_t digit_t; // Unsigned 64-bit digit

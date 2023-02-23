@@ -8,7 +8,8 @@ message(STATUS "The C   compiler : ${CMAKE_C_COMPILER_ID} ${CMAKE_C_COMPILER_VER
 set(CMAKE_CXX_STANDARD 17)
 
 # set c++ flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -Wall ${CMAKE_CXX_FLAGS}")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -Wall ${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall ${CMAKE_CXX_FLAGS}")
 
 #######################################################
 # library
@@ -71,7 +72,10 @@ include_directories(${LIB_SRC_PATH})
 # generate binary
 add_executable(${BIN_NAME} ${BIN_SRCS})
 # set so for binary
-target_link_libraries(${BIN_NAME} PRIVATE ${LIB_NAME})
+target_link_libraries(${BIN_NAME} PRIVATE
+	${LIB_NAME}
+	pthread
+)
 
 # for installing
 #install(TARGETS ${BIN_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)

@@ -19,6 +19,7 @@ std::string EncryptoService::Calculate(const std::string& usr, const std::string
 
 	// get oprf key by usr
 	auto key = GetKey(usr);
+	cout<< "get key ok"<<endl;
 
 	// str to item (hash) item is 16 byte array
 	vector<apsi::Item> items;
@@ -26,19 +27,23 @@ std::string EncryptoService::Calculate(const std::string& usr, const std::string
 	items.emplace_back(item);
 
 	// receiver oprf,
-    apsi::oprf::OPRFReceiver recv(items);
+	cout<< "receiver oprf"<<endl;
+	apsi::oprf::OPRFReceiver recv(items);
 	auto cipher = recv.query_data();
 
 	// run oprf
+	cout<< "run oprf"<<endl;
 	auto oprf_data = apsi::oprf::OPRFSender::ProcessQueries(cipher, key);
 
 	// get result
+	cout<< "get oprf"<<endl;
 	auto [hashed_items, label_keys] = ExtractHashes(oprf_data, recv);
-    if (hashed_items.size() == 0) {
-        cout<< "extract hashes error"<<endl;
+	if (hashed_items.size() == 0) {
+		cout<< "extract hashes error"<<endl;
 		throw runtime_error("extract hasheds error");
-    }
+	}
 
+	cout<< "result : " << hashed_items.at(1).to_string() <<endl;
 	// return new password (hashed string)
 	return hashed_items.at(1).to_string();
 }
@@ -54,7 +59,9 @@ apsi::oprf::OPRFKey EncryptoService::GetKey(const std::string& usr) {
 	cout<< "can not find key file: " << path << endl;
 
 	apsi::oprf::OPRFKey key;
+	cout<< "create oprf key" << endl;
 	SaveKey(key, path);
+	cout<< "save key ok" << endl;
 	return key;
 }
 
