@@ -53,7 +53,7 @@ apsi::oprf::OPRFKey EncryptoService::GetKey(const std::string& usr) {
 	string path(usr + ".key");
 	if (std::filesystem::exists(path)) {
 		cout<< "find key file: " << path << endl;
-		return move(LoadKey(path));
+		return LoadKey(path);
 	}
 
 	cout<< "can not find key file: " << path << endl;

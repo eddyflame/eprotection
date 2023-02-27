@@ -36,7 +36,7 @@
 #define SEAL_USE__SUBBORROW_U64
 
 // Zero memory functions
-#define SEAL_USE_EXPLICIT_BZERO
+// #define SEAL_USE_EXPLICIT_BZERO
 /* #undef SEAL_USE_EXPLICIT_MEMSET */
 /* #undef SEAL_USE_MEMSET_S */
 
